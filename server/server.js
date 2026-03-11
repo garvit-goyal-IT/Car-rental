@@ -1,6 +1,7 @@
 import express from 'express';
 import { createServer } from 'http';
 import cors from 'cors';
+// const cors = require('cors')
 import dotenv from 'dotenv';
 import connectDB from './config/database.js';
 import { initWebSocket } from './websocket/index.js';
@@ -27,10 +28,12 @@ connectDB();
 initWebSocket(server);
 
 // Middleware
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-  credentials: true
-}));
+// app.use(cors({
+//   origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+//   credentials: true
+// }));
+
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -95,7 +98,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = 8000;
 
 server.listen(PORT, () => {
   console.log('');

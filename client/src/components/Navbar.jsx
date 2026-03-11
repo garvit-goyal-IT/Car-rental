@@ -40,27 +40,6 @@ const Navbar = () => {
             >
               Browse Vehicles
             </Link>
-            <Link
-              to="/contact"
-              className="text-white hover:text-accent-200 font-semibold text-lg transition-colors"
-            >
-              Contact Us
-            </Link>
-            <Link
-              to="/about"
-              className="text-white hover:text-accent-200 font-semibold text-lg transition-colors"
-            >
-              About Us
-            </Link>
-
-            {isAuthenticated && user?.role === 'admin' && (
-              <Link
-                to="/admin"
-                className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg font-semibold text-lg transition-all shadow-md hover:shadow-lg"
-              >
-                🔧 Admin Panel
-              </Link>
-            )}
 
             {isAuthenticated ? (
               <>
@@ -98,114 +77,7 @@ const Navbar = () => {
               </>
             )}
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-white focus:outline-none"
-          >
-            <svg
-              className="h-8 w-8"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2.5"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {mobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden pb-5 animate-slide-up">
-            <div className="flex flex-col space-y-4">
-              <Link
-                to="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-white hover:text-accent-200 font-semibold text-lg transition-colors py-2"
-              >
-                Home
-              </Link>
-              <Link
-                to="/cars"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-white hover:text-accent-200 font-semibold text-lg transition-colors py-2"
-              >
-                Browse Vehicles
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-white hover:text-accent-200 font-semibold text-lg transition-colors py-2"
-              >
-                Contact Us
-              </Link>
-              <Link
-                to="/about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-white hover:text-accent-200 font-semibold text-lg transition-colors py-2"
-              >
-                About Us
-              </Link>
-
-              {isAuthenticated && user?.role === 'admin' && (
-                <Link
-                  to="/admin"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold text-lg transition-all"
-                >
-                  🔧 Admin Panel
-                </Link>
-              )}
-
-              {isAuthenticated ? (
-                <>
-                  <Link
-                    to="/dashboard"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-white hover:text-accent-200 font-semibold text-lg transition-colors py-2 flex items-center space-x-2"
-                  >
-                    <FaUser className="text-lg" />
-                    <span>{user?.name}</span>
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg font-semibold text-lg flex items-center space-x-2 transition-all w-full justify-center"
-                  >
-                    <FaSignOutAlt className="text-lg" />
-                    <span>Logout</span>
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link
-                    to="/login"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold text-lg flex items-center space-x-2 transition-all justify-center"
-                  >
-                    <FaSignInAlt className="text-lg" />
-                    <span>Login</span>
-                  </Link>
-                  <Link
-                    to="/register"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="bg-accent-500 hover:bg-accent-600 text-white px-6 py-3 rounded-lg font-semibold text-lg flex items-center space-x-2 transition-all justify-center"
-                  >
-                    <FaUserPlus className="text-lg" />
-                    <span>Sign Up</span>
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );

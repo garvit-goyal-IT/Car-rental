@@ -3,7 +3,6 @@ import { AuthProvider } from './context/AuthContext';
 import { WebSocketProvider } from './context/WebSocketContext';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
-import AdminRoute from './components/AdminRoute';
 
 // Pages
 import Home from './pages/Home';
@@ -14,16 +13,6 @@ import CarDetails from './pages/CarDetails';
 import Booking from './pages/Booking';
 import Payment from './pages/Payment';
 import Dashboard from './pages/Dashboard';
-import ContactUs from './pages/ContactUs';
-import AboutUs from './pages/AboutUs';
-
-// Admin Pages
-import AdminDashboard from './pages/AdminDashboard';
-import AdminUsers from './pages/AdminUsers';
-import AdminCars from './pages/AdminCars';
-import AdminActivityLogs from './pages/AdminActivityLogs';
-import AdminCarAnalytics from './pages/AdminCarAnalytics';
-import AdminMessages from './pages/AdminMessages';
 
 function App() {
   return (
@@ -39,8 +28,6 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/cars" element={<CarListing />} />
               <Route path="/cars/:id" element={<CarDetails />} />
-              <Route path="/contact" element={<ContactUs />} />
-              <Route path="/about" element={<AboutUs />} />
 
               {/* Protected Routes */}
               <Route
@@ -65,56 +52,6 @@ function App() {
                   <ProtectedRoute>
                     <Dashboard />
                   </ProtectedRoute>
-                }
-              />
-
-              {/* Admin Routes */}
-              <Route
-                path="/admin"
-                element={
-                  <AdminRoute>
-                    <AdminDashboard />
-                  </AdminRoute>
-                }
-              />
-              <Route
-                path="/admin/users"
-                element={
-                  <AdminRoute>
-                    <AdminUsers />
-                  </AdminRoute>
-                }
-              />
-              <Route
-                path="/admin/cars"
-                element={
-                  <AdminRoute>
-                    <AdminCars />
-                  </AdminRoute>
-                }
-              />
-              <Route
-                path="/admin/cars/:carId/analytics"
-                element={
-                  <AdminRoute>
-                    <AdminCarAnalytics />
-                  </AdminRoute>
-                }
-              />
-              <Route
-                path="/admin/activity-logs"
-                element={
-                  <AdminRoute>
-                    <AdminActivityLogs />
-                  </AdminRoute>
-                }
-              />
-              <Route
-                path="/admin/messages"
-                element={
-                  <AdminRoute>
-                    <AdminMessages />
-                  </AdminRoute>
                 }
               />
 
